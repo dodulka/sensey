@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <title>Вхід</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <a href="index.html">Головна</a>
+      <a href="auth.html">Увійти</a>
+      <a href="reg.html">Реєстрація</a>
+      <button id="cartBtn">🧺 <span id="cartCount">0</span></button>
+    </div>
+  </header>
+
+  <main class="content">
+    <h2>Увійти</h2>
+    <form onsubmit="login(event)">
+      <input type="email" id="loginEmail" placeholder="Email" required><br><br>
+      <input type="password" id="loginPass" placeholder="Пароль" required><br><br>
+      <button type="submit">Увійти</button>
+    </form>
+    <p>Нема акаунту? <a href="reg.html">Зареєструватися</a></p>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <title>Sensei Shop</title>
+
+  <!-- якщо користувач не в локалсторедж -> перенаправляємо на auth (щоб спочатку була авторизація) -->
+  <script>
+    try {
+      if(!localStorage.getItem('currentUser')) {
+        // Якщо ми вже на auth або reg або checkout, не редіректимо
+        const p = location.pathname.split('/').pop();
+        if(p !== 'auth.html' && p !== 'reg.html' && p !== 'checkout.html') {
+          location.href = 'auth.html';
+        }
+      }
+    } catch(e){ /* файл з локального диску може давати помилки в деяких окруженнях */ }
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <a href="index.html">Головна</a>
+      <a href="auth.html">Увійти</a>
+      <a href="reg.html">Реєстрація</a>
+      <button id="cartBtn">🧺 <span id="cartCount">0</span></button>
+    </div>
+  </header>
+
+  <main class="content">
+    <h2>Каталог</h2>
+    <input id="searchInput" placeholder="Пошук...">
+    <div id="products" class="grid"></div>
+  </main>
+
+  <aside id="cartDrawer" class="drawer" aria-hidden="true">
+    <div class="head">
+      <strong>Кошик</strong>
+      <button id="closeCart">Закрити</button>
+    </div>
+    <div id="cartBody" class="cart-body"></div>
+    <div class="foot">
+      Разом: <span id="cartTotal">0 ₴</span>
+      <button id="checkoutBtn">Оформити</button>
+    </div>
+  </aside>
+
+  <!-- Модалка товару -->
+  <div id="productModal" class="modal" aria-hidden="true">
+    <div class="modal-inner">
+      <button id="closeModal" class="modal-close">✕</button>
+      <img id="modalImg" src="" alt="" class="modal-img">
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+      <p class="modal-price" id="modalPrice"></p>
+      <div style="display:flex; gap:10px; justify-content:center;">
+        <button id="modalBuy">Купити</button>
+        <button id="modalCloseBtn">Назад</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

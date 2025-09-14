@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <title>Оформлення замовлення</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="navbar">
+    <a href="index.html">Головна</a>
+    <a href="auth.html">Увійти</a>
+    <a href="reg.html">Реєстрація</a>
+    <button id="cartBtn">🧺 <span id="cartCount">0</span></button>
+  </div>
+</header>
+
+<main class="content">
+  <h2>Оформлення замовлення</h2>
+  <form id="orderForm">
+    <input type="text" id="custName" placeholder="Ваше ім’я" required><br><br>
+    <input type="text" id="custAddr" placeholder="Адреса доставки" required><br><br>
+    <input type="tel" id="custPhone" placeholder="Телефон" required><br><br>
+    <button type="submit">Підтвердити</button>
+  </form>
+  <p id="orderMsg" style="display:none; font-weight:bold; color:green; margin-top:15px;">
+    ✅ Замовлення прийнято. Очікуйте кур’єра!
+  </p>
+</main>
+
+<script src="main.js"></script>
+<script>
+document.getElementById('orderForm').onsubmit = function(e){
+  e.preventDefault();
+  localStorage.removeItem('cart');
+  updateCartUI();
+  document.getElementById('orderForm').style.display = 'none';
+  document.getElementById('orderMsg').style.display = 'block';
+}
+</script>
+</body>
+</html>

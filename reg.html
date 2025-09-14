@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <title>Реєстрація</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <a href="index.html">Головна</a>
+      <a href="auth.html">Увійти</a>
+      <a href="reg.html">Реєстрація</a>
+      <button id="cartBtn">🧺 <span id="cartCount">0</span></button>
+    </div>
+  </header>
+
+  <main class="content">
+    <h2>Реєстрація</h2>
+    <form onsubmit="register(event)">
+      <input type="text" id="regName" placeholder="Ім'я"><br><br>
+      <input type="email" id="regEmail" placeholder="Email" required><br><br>
+      <input type="password" id="regPass" placeholder="Пароль" required><br><br>
+      <button type="submit">Зареєструватися</button>
+    </form>
+    <p>Вже є акаунт? <a href="auth.html">Увійти</a></p>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
