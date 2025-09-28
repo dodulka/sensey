@@ -1,14 +1,14 @@
 const PRODUCTS = [
-    {id:'p1', title:'Футболка', price:499, img:'images/futbolka.jpg', desc: 'Зручна бавовняна футболка, різні розміри.'},
-    {id:'p2', title:'Худі', price:1299, img:'images/hudi.jpg', desc: 'Тепле худі з капюшоном, м\'яка підкладка.'},
-    {id:'p3', title:'Штани', price:899, img:'images/shtany.jpg', desc: 'Комфортні штани для щоденного носіння.'},
-    {id:'p4', title:'Кросівки', price:2499, img:'images/krosivky.jpg', desc: 'Легкі кросівки для спорту та міста.'},
-    {id:'p5', title:'Кепка', price:399, img:'images/kepka.jpg', desc: 'Кепка з регулюванням, універсальний розмір.'},
-    {id:'p6', title:'Куртка', price:1799, img:'images/kurtka.jpg', desc: 'Водостійка куртка з теплою підкладкою.'},
-    {id:'p7', title:'Шкарпетки (набір)', price:199, img:'images/shkarpetky.jpg', desc: 'Набір з 3 пар — м\'які й дихаючі.'},
-    {id:'p8', title:'Рюкзак', price:1499, img:'images/ryukzak.jpg', desc: 'Просторий рюкзак з багатьма відділеннями.'},
-    {id:'p9', title:'Ремінь', price:349, img:'images/remin.jpg', desc: 'Шкіряний ремінь, класичний дизайн.'},
-    {id:'p10', title:'Спортивний костюм', price:2299, img:'images/kostyum.jpg', desc: 'Костюм для тренувань та прогулянок.'}
+    {id:'p1', title:'Футболка', price:499, img:'images/futbolka.png', desc: 'Зручна бавовняна футболка, різні розміри.'},
+    {id:'p2', title:'Худі', price:1299, img:'images/hudi.png', desc: 'Тепле худі з капюшоном, м\'яка підкладка.'},
+    {id:'p3', title:'Штани', price:899, img:'images/shtany.png', desc: 'Комфортні штани для щоденного носіння.'},
+    {id:'p4', title:'Кросівки', price:2499, img:'images/krosivky.png', desc: 'Легкі кросівки для спорту та міста.'},
+    {id:'p5', title:'Кепка', price:399, img:'images/kepka.png', desc: 'Кепка з регулюванням, універсальний розмір.'},
+    {id:'p6', title:'Куртка', price:1799, img:'images/kurtka.png', desc: 'Водостійка куртка з теплою підкладкою.'},
+    {id:'p7', title:'Шкарпетки (набір)', price:199, img:'images/shkarpetky.png', desc: 'Набір з 3 пар — м\'які й дихаючі.'},
+    {id:'p8', title:'Рюкзак', price:1499, img:'images/ryy.png', desc: 'Просторий рюкзак з багатьма відділеннями.'},
+    {id:'p9', title:'Ремінь', price:349, img:'images/remin.png', desc: 'Шкіряний ремінь, класичний дизайн.'},
+    {id:'p10', title:'Спортивний костюм', price:2299, img:'images/kostt.png', desc: 'Костюм для тренувань та прогулянок.'}
   ];
   
   function getCart(){ return JSON.parse(localStorage.getItem('cart') || '[]'); }
@@ -20,7 +20,6 @@ const PRODUCTS = [
     if(it) it.qty++;
     else cart.push({id, qty:1});
     saveCart(cart);
-    // Відкриваємо кошик щоб користувач бачив зміни
     const drawer = document.getElementById('cartDrawer');
     if(drawer) drawer.classList.add('open');
   }
@@ -77,7 +76,7 @@ const PRODUCTS = [
             <button class="qty-rm" title="Видалити">✖</button>
           </div>
         `;
-        // слухачі для кнопок
+
         line.querySelector('.qty-inc').addEventListener('click', ()=> changeQty(item.id, +1));
         line.querySelector('.qty-dec').addEventListener('click', ()=> changeQty(item.id, -1));
         line.querySelector('.qty-rm').addEventListener('click', ()=> removeFromCart(item.id));
@@ -90,7 +89,7 @@ const PRODUCTS = [
     if(total) total.textContent = sum + ' ₴';
   }
   
-  // Рендер каталогу, з підтримкою фільтра (пошук)
+
   function renderProducts(filter=''){
     const box = document.getElementById('products');
     if(!box) return;
@@ -107,18 +106,18 @@ const PRODUCTS = [
           <button class="buy-btn">Купити</button>
         </div>
       `;
-      // Купити (щоб не відкривалось модальне при кліці на кнопку)
+
       div.querySelector('.buy-btn').addEventListener('click', (e)=>{
         e.stopPropagation();
         addToCart(p.id);
       });
-      // Клік на картку — показати модалку з інфою
+
       div.addEventListener('click', ()=> showProduct(p.id));
       box.appendChild(div);
     });
   }
   
-  /* --- Модалка товару --- */
+
   function showProduct(id){
     const p = PRODUCTS.find(x=>x.id===id);
     if(!p) return;
@@ -135,7 +134,7 @@ const PRODUCTS = [
     if(m){ m.style.display = 'none'; m.setAttribute('aria-hidden','true'); }
   }
   
-  /* --- Auth / Register (залишив твою логіку) --- */
+
   function register(e){
     e.preventDefault();
     let users = JSON.parse(localStorage.getItem('users')||'[]');
@@ -162,36 +161,35 @@ const PRODUCTS = [
     } else alert('Невірний логін або пароль');
   }
   
-  /* --- Івенти при завантаженні --- */
+
   document.addEventListener('DOMContentLoaded', ()=> {
     renderProducts();
     updateCartUI();
   
-    // Кнопки кошика
+
     const cartBtn = document.getElementById('cartBtn');
     const drawer = document.getElementById('cartDrawer');
     const closeCart = document.getElementById('closeCart');
     if(cartBtn) cartBtn.addEventListener('click', ()=> drawer.classList.add('open'));
     if(closeCart) closeCart.addEventListener('click', ()=> drawer.classList.remove('open'));
   
-    // Пошук
+
     const searchInput = document.getElementById('searchInput');
     if(searchInput) searchInput.addEventListener('input', ()=> renderProducts(searchInput.value));
   
-    // Checkout
+
     const checkoutBtn = document.getElementById('checkoutBtn');
     if(checkoutBtn) checkoutBtn.addEventListener('click', ()=> {
       if(getCart().length === 0){ alert('Кошик порожній'); return; }
       window.location = 'checkout.html';
     });
-  
-    // Модалка закриття
+
     const closeModalBtn = document.getElementById('closeModal');
     if(closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
     const modalCloseBtn = document.getElementById('modalCloseBtn');
     if(modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
   
-    // Клік поза модалкою закриває її
+
     const modal = document.getElementById('productModal');
     if(modal) modal.addEventListener('click', (e)=> { if(e.target === modal) closeModal(); });
   });

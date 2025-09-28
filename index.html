@@ -4,11 +4,10 @@
   <meta charset="utf-8">
   <title>Sensei Shop</title>
 
-  <!-- якщо користувач не в локалсторедж -> перенаправляємо на auth (щоб спочатку була авторизація) -->
+
   <script>
     try {
       if(!localStorage.getItem('currentUser')) {
-        // Якщо ми вже на auth або reg або checkout, не редіректимо
         const p = location.pathname.split('/').pop();
         if(p !== 'auth.html' && p !== 'reg.html' && p !== 'checkout.html') {
           location.href = 'auth.html';
@@ -47,7 +46,7 @@
     </div>
   </aside>
 
-  <!-- Модалка товару -->
+
   <div id="productModal" class="modal" aria-hidden="true">
     <div class="modal-inner">
       <button id="closeModal" class="modal-close">✕</button>

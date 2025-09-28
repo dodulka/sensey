@@ -1,4 +1,4 @@
-/* ======= Глобальний стиль ======= */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 body {
@@ -9,7 +9,6 @@ body {
   color: #f5f5f5;
 }
 
-/* ======= Хедер ======= */
 header {
   background: #0f0f0f;
   color: #fff;
@@ -44,18 +43,18 @@ header {
   transform: translateY(-2px);
 }
 
-/* глобально для лінків (щоб не було фіолетового) */
+
 a, a:link, a:visited {
   color: #fff;
   text-decoration: none;
 }
 a:hover { color: #ff6600; text-decoration: underline; }
 
-/* ======= Контент ======= */
+
 .content { padding: 28px 30px; max-width: 1200px; margin: 0 auto; }
 .content h2 { color: #ff6600; margin: 0 0 12px 0; font-size: 28px; }
 
-/* пошук */
+
 #searchInput {
   padding: 10px 12px;
   border-radius: 10px;
@@ -68,7 +67,7 @@ a:hover { color: #ff6600; text-decoration: underline; }
 }
 #searchInput:focus { box-shadow: 0 0 10px rgba(255,102,0,0.25); }
 
-/* ======= Каталог (сітка) ======= */
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
@@ -76,7 +75,7 @@ a:hover { color: #ff6600; text-decoration: underline; }
   margin-top: 10px;
 }
 
-/* ======= Картки товарів ======= */
+
 .card {
   background: linear-gradient(180deg, #161616, #1b1b1b);
   border-radius: 14px;
@@ -107,7 +106,7 @@ a:hover { color: #ff6600; text-decoration: underline; }
 }
 .card .buy-btn:hover { transform: scale(1.03); }
 
-/* ======= Drawer (кошик) ======= */
+
 .drawer {
   position: fixed;
   right: 0;
@@ -130,7 +129,7 @@ a:hover { color: #ff6600; text-decoration: underline; }
 .drawer .head strong { color:#ff6600; font-size:18px; }
 .drawer .cart-body { overflow-y:auto; flex: 1 1 auto; padding-right:6px; }
 
-/* картка рядка в кошику */
+
 .cart-item {
   display:flex;
   gap: 10px;
@@ -149,14 +148,12 @@ a:hover { color: #ff6600; text-decoration: underline; }
 .ci-right button { background:#2b2b2b; border:none; color:#fff; padding:6px 8px; border-radius:8px; cursor:pointer; }
 .ci-right .qty { min-width:28px; text-align:center; display:inline-block; }
 
-/* футер кошика */
 .foot { margin-top:12px; display:flex; justify-content:space-between; align-items:center; gap:10px; }
 .foot button { background: linear-gradient(135deg, #ff4b6e, #ff8a3d); border:none; padding:10px 14px; border-radius:10px; color:#fff; font-weight:700; cursor:pointer; }
 
-/* порожній кошик */
+
 .empty-cart { padding: 18px; color:#bbb; text-align:center; }
 
-/* ======= Модалка товару ======= */
 .modal {
   position: fixed;
   inset: 0;
@@ -180,7 +177,7 @@ a:hover { color: #ff6600; text-decoration: underline; }
 .modal-img { width:100%; height:280px; object-fit:cover; border-radius:8px; margin-bottom:12px; }
 .modal-price { font-weight:800; font-size:20px; color:#ffb07c; margin:10px 0 18px; }
 
-/* ======= Формы (auth/reg/checkout) ======= */
+
 form {
   display:flex;
   flex-direction:column;
@@ -200,7 +197,6 @@ form input {
 }
 form button { background: linear-gradient(135deg,#ff4b6e,#ff8a3d); border:none; padding:10px 12px; color:#fff; border-radius:10px; cursor:pointer; font-weight:700; }
 
-/* Мобільне */
 @media (max-width:600px){
   .card { min-height: 300px; }
   .modal-img { height:220px; }
